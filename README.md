@@ -7,6 +7,7 @@
 
 **Jira Copilot Backend** is a FastAPI web application designed to assist Agile teams in estimating Jira stories using the story's summary and description using OpenAI ChatGPT. Additionally, it provides functionality to create and update subtasks directly on the Jira board, streamlining project management and enhancing productivity.
 
+*Link to try out the app using Swagger : [Click](https://jira-fstack-app-1.onrender.com/docs#/)*
 ## Features
 
 - **GenAI Story Estimation**: Estimate the effort required for Jira stories based on the summary and description automatically fetched based on story-id.
