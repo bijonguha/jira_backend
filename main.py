@@ -26,7 +26,7 @@ def get_app() -> FastAPI:
     """
     try:
         fast_app = FastAPI(
-                title="GenAI Jira Estimator",
+                title="Jira Copilot Backend",
                 description="A simple FastAPI backend for Mr. Agile application.")
         return fast_app
     except Exception as e:

@@ -1,11 +1,11 @@
 
-# Jira FStack App
+# Jira Copilot Backend
 
 ![Jira FStack Logo](artefacts/genai_jira.JPG) <!-- Replace with an actual logo if you have one -->
 
 ## Overview
 
-**Jira FStack App** is a FastAPI web application designed to assist Agile teams in estimating Jira stories using the story's summary and description using OpenAI ChatGPT. Additionally, it provides functionality to create and update subtasks directly on the Jira board, streamlining project management and enhancing productivity.
+**Jira Copilot Backend** is a FastAPI web application designed to assist Agile teams in estimating Jira stories using the story's summary and description using OpenAI ChatGPT. Additionally, it provides functionality to create and update subtasks directly on the Jira board, streamlining project management and enhancing productivity.
 
 ## Features
 
