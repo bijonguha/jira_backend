@@ -4,7 +4,9 @@ load_dotenv()
 import yaml
 from yaml.loader import SafeLoader
 
-from fastapi import FastAPI, Request
+from typing import Annotated
+
+from fastapi import FastAPI, Request, Header, Query
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.data_models import Story, StoryDesc, StoryEstimate
@@ -16,12 +18,6 @@ from src.logger import setup_logger
 from src.jira_handler import JiraHandler
 
 LOGGER = setup_logger(__name__)
-
-with open(Constants.CONFIG_APP.value) as f:
-    app_config = yaml.load(f, Loader=SafeLoader)
-
-jira_handler = JiraHandler(app_config["username"], app_config["api_token"], app_config["jira_url"])
-assert jira_handler.check_health()
 
 # Installed libraries
 def get_app() -> FastAPI:
@@ -35,7 +31,6 @@ def get_app() -> FastAPI:
         return fast_app
     except Exception as e:
         LOGGER.error('exception occured in get_app() - {0}'.format(e))
-
 
 app = get_app()
 
@@ -55,23 +50,42 @@ async def health_check(request: Request):
     return {"status": 200}
 
 @app.post("/story_id", tags=["Estimation"],
-          summary="Estimate story subtasks with story id",
-          response_model=StoryEstimate)
-async def estimate_story(story_info: Story):
+          summary="Estimate story subtasks with story id")
+async def estimate_story(story_info: Story, username: Annotated[str, Header()],
+                         api_token: Annotated[str, Header()], jira_url: Annotated[str, Header()],
+                         prompt_template: Annotated[str | None, Query()] = None):
     """
     Story estimation endpoint
     """
+
+    jira_handler = JiraHandler(username, api_token, jira_url)
     
-    result = jira_handler.get_story_estimate(story_info.story_id)
+    if not jira_handler.check_health():
+        response = {
+            "status": 400,
+            "message": "Failed to connect to JIRA"
+        }
+        return response
     
+    result = jira_handler.get_story_estimate(story_info.story_id, prompt_template)
+
     return StoryEstimate(**result)
 
 @app.post("/create_subtasks", tags=["Estimation"],
           summary="Creation of subtasks in JIRA for the given story id")
-async def create_subtasks_for_story(story_info: StoryEstimate):
+async def create_subtasks_for_story(story_info: StoryEstimate, username: Annotated[str, Header()],
+                         api_token: Annotated[str, Header()], jira_url: Annotated[str, Header()]):
     """
     Story estimation endpoint
     """
+    jira_handler = JiraHandler(username, api_token, jira_url)
+
+    if not jira_handler.check_health():
+        response = {
+            "status": 400,
+            "message": "Failed to connect to JIRA"
+        }
+        return response
 
     response = jira_handler.create_tasks_from_estimate(story_info.dict())
     

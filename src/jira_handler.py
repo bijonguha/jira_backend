@@ -13,10 +13,7 @@ from src.constants import Constants
 ol = OpenAI_Grollm()
 
 with open(Constants.PROMPT_PATH.value, 'r') as f:
-    prompt_template = f.read()
-
-with open(Constants.CONFIG_APP.value) as f:
-    app_config = yaml.load(f, Loader=SafeLoader)
+    prompt_template_default = f.read()
 
 class JiraHandler:
 
@@ -79,8 +76,14 @@ class JiraHandler:
                 "story_id": story_id
             }
         
-    def get_story_estimate(self, story_id):
-
+    def get_story_estimate(self, story_id, prompt_template = prompt_template_default):
+        
+        if "{STORY_QUERY}" not in prompt_template:
+            LOGGER.error("Incorrect prompt template sent, {STORY_QUERY} keyword not found in prompt template")
+            story_dict["status"] = 400
+            story_dict["message"] = "Incorrect prompt template sent, {STORY_QUERY} keyword not found in prompt template"
+            return story_dict
+                    
         story_dict = self.get_story_info(story_id)
 
         if story_dict["status"] == 200:
@@ -121,7 +124,7 @@ class JiraHandler:
         payload = {
             "fields": {
                 "project": {
-                    "key": app_config["project_key"]  # Replace with your Jira project key
+                    "key": story_id.split("-")[0]  # Replace with your Jira project key
                 },
                 "parent": {
                     "key": story_id
@@ -158,6 +161,7 @@ class JiraHandler:
         Args:
             story_id (str): The ID of the Jira story.
         """
+
         story_estimate = story_estimate_dict
         story_id = story_estimate["story_id"]
 
