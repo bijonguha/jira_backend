@@ -49,6 +49,31 @@ async def health_check(request: Request):
     """
     return {"status": 200}
 
+
+@app.post("/jira_authenticate", tags=["Authentication"],
+          summary="Jira authentication endpoint")
+async def jira_authenticate(username: Annotated[str, Header()],
+                            api_token: Annotated[str, Header()], jira_url: Annotated[str, Header()]):
+    """
+    Jira authentication endpoint
+    """
+
+    jira_handler = JiraHandler(username, api_token, jira_url)
+    
+    if jira_handler.check_health():
+        response = {
+            "status": 200,
+            "message": "Successfully connected to JIRA"
+        }
+        return response
+
+    else:
+        response = {
+            "status": 400,
+            "message": "Failed to connect to JIRA"
+        }
+        return response
+    
 @app.post("/story_id", tags=["Estimation"],
           summary="Estimate story subtasks with story id")
 async def estimate_story(story_info: Story, username: Annotated[str, Header()],
