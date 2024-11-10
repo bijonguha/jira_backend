@@ -19,6 +19,9 @@ from src.jira_handler import JiraHandler
 
 LOGGER = setup_logger(__name__)
 
+with open(Constants.PROMPT_PATH.value, 'r') as f:
+    prompt_template_default = f.read()
+
 # Installed libraries
 def get_app() -> FastAPI:
     """
@@ -49,6 +52,13 @@ async def health_check(request: Request):
     """
     return {"status": 200}
 
+@app.get("/prompt_template", tags=["Estimation"])
+async def get_prompt_template(request: Request):
+    """
+    Health check endpoint
+    """
+    return {"status": 200,
+            "prompt_template": prompt_template_default}
 
 @app.post("/jira_authenticate", tags=["Authentication"],
           summary="Jira authentication endpoint")
