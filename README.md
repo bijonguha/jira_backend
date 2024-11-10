@@ -7,6 +7,13 @@
 
 **Jira Copilot Backend** is a FastAPI web application designed to assist Agile teams in estimating Jira stories using the story's summary and description using OpenAI ChatGPT. Additionally, it provides functionality to create and update subtasks directly on the Jira board, streamlining project management and enhancing productivity.
 
+## 🚀 Explore the App
+
+🌐 **Webapp Link:** [Click Here to Access the Jira Estimator](https://jira-estimator.vercel.app/)  
+
+📄 **Swagger Documentation:** [Click Here for API Docs](https://jira-fstack-app-1.onrender.com/docs#/)
+
+
 ## Features
 
 - **GenAI Story Estimation**: Estimate the effort required for Jira stories based on the summary and description automatically fetched based on story-id.
@@ -79,6 +86,10 @@ You can access the API documentation at [http://localhost:8000/docs](http://loca
   - Request body should include estimated story information.
   - Requires headers: `username`, `api_token`, `jira_url`.
 
+## Contributors
+- [Rishav](https://github.com/rishavmahapatra) - Frontend
+- [Jaiyesh](https://github.com/jaiyesh) - Python & Backend
+  
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a pull request or open an issue to discuss any improvements or features.
