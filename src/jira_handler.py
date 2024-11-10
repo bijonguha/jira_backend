@@ -76,8 +76,14 @@ class JiraHandler:
                 "story_id": story_id
             }
         
-    def get_story_estimate(self, story_id, prompt_template = prompt_template_default):
+    def get_story_estimate(self, story_id, prompt_template):
         
+        LOGGER.debug(f"Prompt template received : {prompt_template}")
+
+        if prompt_template is None:
+            LOGGER.debug("Utilizing the default Prompt template")
+            prompt_template = prompt_template_default
+
         if "{STORY_QUERY}" not in prompt_template:
             LOGGER.error("Incorrect prompt template sent, {STORY_QUERY} keyword not found in prompt template")
             story_dict["status"] = 400
