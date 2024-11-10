@@ -25,10 +25,16 @@ class JiraHandler:
 
     def check_health(self):
 
-        response = requests.get(f'{self.jira_url}/rest/api/2/field', auth=HTTPBasicAuth(self.username, self.api_token))
+        response = requests.get(f'{self.jira_url}/rest/api/2/project', auth=HTTPBasicAuth(self.username, self.api_token)).json()
 
-        if response.status_code == 200:
+        if response:
+
             LOGGER.info("Connected to JIRA")
+            project_list = []
+            for pr in response:
+                project_list.append(pr['name'])
+
+            LOGGER.info(f"Projects fetched: {project_list}")
             return True
         else:
             LOGGER.error("Failed to connect to JIRA")
