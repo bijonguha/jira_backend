@@ -4,13 +4,13 @@ from requests.auth import HTTPBasicAuth
 import json
 import yaml
 from yaml.loader import SafeLoader
-from grollm import OpenAI_Grollm
+from grollm import Gemini_Grollm
 
 from src.logger import setup_logger
 LOGGER = setup_logger(__name__)
 
 from src.constants import Constants
-ol = OpenAI_Grollm()
+ol = Gemini_Grollm()
 
 with open(Constants.PROMPT_PATH.value, 'r') as f:
     prompt_template_default = f.read()
@@ -104,6 +104,7 @@ class JiraHandler:
             LOGGER.debug(f"Prompt text : {prompt}")
 
             try:
+
                 estimate = ol.send_prompt(prompt)
                 story_dict["subtasks"] = eval(estimate)
                 return story_dict
