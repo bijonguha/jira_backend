@@ -1,7 +1,7 @@
 
 # Jira Copilot Backend
 
-![Jira FStack Logo](artefacts/genai_jira.JPG) <!-- Replace with an actual logo if you have one -->
+![Jira FStack Logo](artefacts/genai_jira.JPG)
 
 ## Overview
 
