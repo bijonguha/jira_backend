@@ -87,6 +87,7 @@ You can access the API documentation at [http://localhost:8000/docs](http://loca
   - Requires headers: `username`, `api_token`, `jira_url`.
 
 ## Contributors
+- Bijon - Python & Backend
 - [Rishav](https://github.com/rishavmahapatra) - Frontend
 - [Jaiyesh](https://github.com/jaiyesh) - Python & Backend
   
