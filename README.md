@@ -9,7 +9,7 @@
 
 ## 🚀 Explore the App
 
-🌐 **Webapp Link:** [Click Here to Access the Jira Estimator](https://jira-copilot.vercel.app/)  
+🌐 **Webapp Link:** [Click Here to Access the Jira Estimator](https://jira-copilot.vercel.app/) [By Rishav](https://github.com/rishavmahapatra/Jira-Copilot)
 
 📄 **Swagger Documentation:** [Click Here for API Docs](https://jira-fstack-app-1.onrender.com/docs#/)
 
