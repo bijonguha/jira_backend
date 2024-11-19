@@ -3,13 +3,13 @@ from requests.auth import HTTPBasicAuth
 import json
 import yaml
 from yaml.loader import SafeLoader
-from grollm import Gemini_Grollm
+from grollm import OpenAI_Grollm
 
 from src.logger import setup_logger
 LOGGER = setup_logger(__name__)
 
 from src.constants import Constants
-ol = Gemini_Grollm()
+ol = OpenAI_Grollm()
 
 with open(Constants.PROMPT_PATH.value, 'r') as f:
     prompt_template_default = f.read()
