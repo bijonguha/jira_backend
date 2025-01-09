@@ -1,0 +1,41 @@
+Here are some references of Jira user stories, id and the days effort spent for completing those stories. It will be in the format of list of python dictionary with keys 'days_effort_spent', 'id', 'story_data'.
+***
+{STORIES_METADATA}
+***
+In the next step, you will be given a Jira story description. 
+***
+{STORY_QUERY}
+***
+You have to take that story and estimate the possible amount of days effort will be required to complete it considering attached reference stories data above.
+Suggest best possible effort estimate in terms of days and also suggest a confidence score associated with that prediction. 
+Remember that stories description can be sometimes short and imprecise. So consider scenarios of examples stories description and try to figure out what subtasks will be required to complete the stories. 
+Make your estimation robust based on shared stories data and knowledge from internet. You will be judged on the basis of subtasks segregation granularity and how precise you are able to estimate the overall effort.
+***
+You donot need to give any assumption or explanation of why anything is suggested.
+Use the following format for response:
+
+[ # list of dictionary
+    { #python dictionary
+    "subtask" : # here goes the subtasks description
+    "estimation" : # here goes overall effort in days
+    }
+]
+
+Example:
+[
+    { 
+        "subtask" : "download 1000 images and save in database",
+        "estimation" : 1
+    },
+
+    {
+        "subtask" : "annotate 1000 images using labelimg",
+        "estimation" : 5        
+    },
+
+    {
+        "subtask" : "create xml formating and train images",
+        "estimation" : 3        
+    }
+
+]

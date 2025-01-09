@@ -89,10 +89,11 @@ def create_subtasks_ui(updated_table, original_response, username, api_token, ji
     if hasattr(updated_table, "values"):
         updated_table = updated_table.values.tolist()
 
-    # Update the subtasks in the original response
-    for idx, subtask in enumerate(original_response.get("subtasks", [])):
-        subtask["subtask"] = updated_table[idx][0]  # Updated subtask description
-        subtask["estimation"] = updated_table[idx][1]  # Updated estimation
+    new_subtasks = []
+    for element in updated_table:
+        new_subtasks.append({"subtask": element[0], "estimation": element[1]})
+    
+    original_response["subtasks"] = new_subtasks
 
     # Prepare the payload for the /create_subtasks endpoint
     payload = {
@@ -145,6 +146,7 @@ def update_row_selection(table_data):
     options = [f"Row {idx + 1}: {row[0]}" for idx, row in enumerate(table_data)]
     return gr.update(choices=options, value=[])
 
+import re
 
 def delete_selected_rows(current_table, selected_rows):
     """
@@ -153,18 +155,22 @@ def delete_selected_rows(current_table, selected_rows):
     if hasattr(current_table, "values"):  # If it's a DataFrame
         current_table = current_table.values.tolist()
 
-    # Extract indices of rows to delete
-    indices_to_delete = [
-        int(choice.split()[1]) - 1  # Extract the row index from the selection label
-        for choice in selected_rows
-    ]
+    try:
+        # Extract indices of rows to delete
+        indices_to_delete = [
+            int(re.search(r'\d+', choice).group()) - 1  # Extract the row index using regex
+            for choice in selected_rows
+        ]
 
-    # Remove rows based on the extracted indices
-    updated_table = [
-        row for idx, row in enumerate(current_table) if idx not in indices_to_delete
-    ]
+        # Remove rows based on the extracted indices
+        updated_table = [
+            row for idx, row in enumerate(current_table) if idx not in indices_to_delete
+        ]
 
-    return gr.update(value=updated_table), gr.update(choices=[], value=[])
+        return gr.update(value=updated_table), gr.update(choices=[], value=[])
+    except Exception as e:
+        return gr.update(value=current_table), f"Error: {str(e)}"
+
 
 # Gradio Interface
 def main():
@@ -205,7 +211,6 @@ def main():
             # Action buttons
             estimate_button = gr.Button("Get Estimate")
             save_button = gr.Button("Update Subtasks in JIRA")
-            add_row_button = gr.Button("Add Row")  # Button to add rows
             delete_row_button = gr.Button("Delete Selected Rows")  # Button to delete selected rows
 
             # Outputs
