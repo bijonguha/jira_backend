@@ -6,10 +6,10 @@ WORKDIR /app
 RUN python -m venv .venv && .venv/bin/pip install --no-cache-dir -U pip setuptools
 
 COPY requirements.txt .
-COPY grollm-0.0.8a1-py3-none-any.whl .
+COPY grollm-0.0.9a2-py3-none-any.whl .
 
 RUN .venv/bin/pip install --no-cache-dir -r requirements.txt
-RUN .venv/bin/pip install --no-cache-dir grollm-0.0.8a1-py3-none-any.whl
+RUN .venv/bin/pip install --no-cache-dir grollm-0.0.9a2-py3-none-any.whl
 
 # Stage 2 - Copy only necessary files to the runner stage
 FROM python:3.10-slim
