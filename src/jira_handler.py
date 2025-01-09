@@ -3,13 +3,15 @@ from requests.auth import HTTPBasicAuth
 import json
 import yaml
 from yaml.loader import SafeLoader
-from grollm import OpenAI_Grollm
+from grollm import AzureOpenAI_Grollm
 
 from src.logger import setup_logger
 LOGGER = setup_logger(__name__)
 
 from src.constants import Constants
-ol = OpenAI_Grollm()
+ol = AzureOpenAI_Grollm()
+
+from src.rag import rag_query
 
 with open(Constants.PROMPT_PATH.value, 'r') as f:
     prompt_template_default = f.read()
@@ -98,13 +100,16 @@ class JiraHandler:
         story_dict = self.get_story_info(story_id)
 
         if story_dict["status"] == 200:
-
-            prompt = prompt_template.replace("{STORY_QUERY}", story_dict["description"])
+            
+            stories_similar = rag_query(story_dict["description"])
+            LOGGER.debug(f"Similar stories found: {len(stories_similar)}")
+            tmp = prompt_template.replace("{STORIES_METADATA}", str(stories_similar.get("metadatas", "No similar stories found from database, search in internet")))
+            prompt = tmp.replace("{STORY_QUERY}", story_dict["description"])
             LOGGER.debug(f"Prompt text : {prompt}")
 
             try:
 
-                estimate = ol.send_prompt(prompt)
+                estimate = ol.send_prompt(prompt, temperature=0.2)
                 story_dict["subtasks"] = eval(estimate)
                 return story_dict
             
@@ -130,8 +135,6 @@ class JiraHandler:
             "Content-Type": "application/json"
         }
 
-
-
         # Payload for creating a subtask
         payload = {
             "fields": {
@@ -144,11 +147,9 @@ class JiraHandler:
                 "summary": subtask_summary,
                 "description": "Don't forget to do this too.",
                 "issuetype": {
-                    "id": "10325"
+                    "name": "Subtask"
                 },
-                # "timetracking": {
-                #     "originalEstimate": f"{subtask_estimate}m"  # Estimate in minutes
-                # }
+                "customfield_10016": subtask_estimate
             }
         }
 
@@ -177,11 +178,16 @@ class JiraHandler:
         story_estimate = story_estimate_dict
         story_id = story_estimate["story_id"]
 
+        LOGGER.info(f"Payload for subtask creation: {story_estimate_dict}")
+        
         if story_estimate["status"] == 200 and len(story_estimate["subtasks"]) > 0:
             for subtask in story_estimate["subtasks"]:
-                subtask_summary = subtask.get("subtask", "Unnamed Subtask")
+                subtask_summary = subtask.get("subtask", None)
                 subtask_estimate = subtask.get("estimation", 0)  # Estimate in minutes
                 
+                if subtask_summary == '' or subtask_summary is None:
+                    LOGGER.error(f"Subtask summary not found for subtask: {subtask}")
+                    continue
                 # Create each subtask
                 creation_status = self.create_subtask(story_id, subtask_summary, subtask_estimate)
                 LOGGER.info(f"Subtask creation status: {creation_status}")
