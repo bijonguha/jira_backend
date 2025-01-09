@@ -57,16 +57,20 @@ def estimate_story_ui(story_id, username, api_token, jira_url, prompt_template=N
                 [subtask.get("subtask", ""), subtask.get("estimation", 0)]
                 for subtask in subtasks
             ]
+            # Extract story description
+            story_description = result.get("description", "No description available.")
 
-            # Return table data and the full response as state
+            # Return table data, story description, and the full response as state
             return (
                 gr.update(value=table_data, visible=True),  # Show table
+                gr.update(value=story_description),  # Update story description
                 gr.update(value="Story fetched successfully!"),  # Success message
                 result  # Pass the original response as state
             )
         else:
             return (
                 gr.update(visible=False),  # Hide table
+                gr.update(value=""),  # Clear story description
                 gr.update(value=f"Error: {result.get('message', 'Unknown error')}"),
                 None  # No state to pass
             )
@@ -74,6 +78,7 @@ def estimate_story_ui(story_id, username, api_token, jira_url, prompt_template=N
     except Exception as e:
         return (
             gr.update(visible=False),  # Hide table
+            gr.update(value=""),  # Clear story description
             gr.update(value=f"Error: {str(e)}"),
             None  # No state to pass
         )
@@ -199,7 +204,6 @@ def main():
             auth_button.click(jira_authenticate, inputs=[username, api_token, jira_url], outputs=auth_output)
 
         # Gradio Tab for "Estimate Story"
-        # Gradio Tab for "Estimate Story"
         with gr.Tab("Estimate Story"):
             # Input fields
             story_id = gr.Textbox(label="Story ID", placeholder="Enter the Jira Story ID")
@@ -214,13 +218,22 @@ def main():
             delete_row_button = gr.Button("Delete Selected Rows")  # Button to delete selected rows
 
             # Outputs
+            story_description_output = gr.Textbox(
+                label="Story Description",
+                interactive=False,
+                placeholder="Story description will appear here.",
+                visible=True,
+                lines=3
+            )
+            
             table_output = gr.Dataframe(
-                headers=["Subtask Description", "Estimation (hours)"],
+                headers=["Subtasks", "Estimation"],
                 datatype=["str", "number"],
                 interactive=True,
                 visible=False,
                 label="Editable Subtask Table"
             )
+
             row_selection = gr.CheckboxGroup(label="Select Rows to Delete", visible=True)  # Selection for rows to delete
             output_message = gr.Textbox(label="Message", interactive=False)
 
@@ -231,7 +244,7 @@ def main():
             estimate_button.click(
                 estimate_story_ui,
                 inputs=[story_id, est_username, est_api_token, est_jira_url, prompt_template],
-                outputs=[table_output, output_message, story_state]
+                outputs=[table_output, story_description_output, output_message, story_state]
             )
 
             delete_row_button.click(
