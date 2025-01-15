@@ -1,0 +1,101 @@
+story_key,story_summary,story_description,status,story_points,story_priority,total_in_progress_time,total_blocked_time,total_ready_for_testing_time,total_in_testing_time
+TMA-173,Integrate form elements into existing UI design,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-172,Implement buttons with appropriate actions,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-171,Implement dropdowns with dynamic data loading,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-170,Implement text fields with validation support,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-169,Ensure form elements are visually consistent with design guidelines,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-168,Implement functional buttons for form submission,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-167,Implement dropdowns and populate with data,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-166,Implement text fields with validation,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-165,Test and verify functionality of form elements,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-164,Ensure visual consistency with design guidelines,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-163,Implement buttons,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-162,Implement dropdowns,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-161,Implement text fields,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-160,Perform code review before merging to development branch,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-159,Update any added libraries for OSS clearance,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-158,Ensure successful CI process with corresponding docker artifacts produced,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-157,Ensure every merge to main branch has an approved MR from team lead,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-156,Get any new library usage approved by team lead and push for OSS clearance,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-155,Ensure final code available in main and development branches,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-154,Follow naming conventions,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-153,Perform basic performance testing using simulated values,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-152,Add proper comments throughout the code,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-151,Linting of code,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-150,Update README file with service changes and how to spin it up locally,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-149,Add copyright header to every code file,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-148,Implement proper logging and exception handling,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-147,Local testing using Docker Compose with proper compose file,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-146,Persist generated heatmap in a file location,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-145,Generate heatmap in geojson format,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-144,Fetch latest air quality index values using timeseries API,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-143,Implement logic for using the IDW method with a configurable power function of 2,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-142,Implement and configure Kubernetes Cronjob for the service at a configurable interval,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-141,"Externalize generic configuration for RabbitMQ (queue names, queue credentials). Create best practices queue names.",Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-140,Conduct code review before merging to development branch,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-139,Update added libraries for OSS clearance,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-138,Ensure successful CI process with corresponding docker artifacts produced,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-137,Ensure every merge to main branch has an approved merge request from team lead,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-136,Obtain approval for any new library usage and OSS clearance,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-135,Ensure final code is available in main and development branch,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-134,Follow naming conventions,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-133,Conduct basic performance testing using simulated values,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-132,Perform SAST checks,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-131,Add code commit comments as required,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-130,Linting of code,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-129,Update README file with service changes and instructions,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-128,Add copyright header to every code file,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-127,Add proper comments to the code,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-126,Add proper logging and exception handling,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-125,Test services individually in local using docker compose,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-124,Persist generated heatmap in a file location,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-123,Generate heatmap in geojson format,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-122,Implement IDW method with configurable power function of 2 for creating heatmaps,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-121,Implement logic to obtain latest air quality index values using timeseries API,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-120,Implement Kubernetes Cronjob for scheduling service,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-119,Externalize generic configuration for RabbitMQ. Follow Best practices for queue creation.,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-118,Perform code review before merging to development branch,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-117,Ensure CI process success with corresponding Docker artifacts,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-116,Merge to main branch with approved merge request from team lead,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-115,Obtain approval for using any new library,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-114,Update any new libraries for OSS clearance,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-113,Use cleared libraries to the greatest extent possible,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-112,Final code availability in main and development branches,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-111,Follow naming conventions,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-110,Perform basic performance testing using simulated values,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-109,Add code commit comments as required,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-108,Perform linting of the code,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-107,Add README section on how to spin the service up locally and test it,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-106,Update README file for the service,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-105,Add copyright header to every code file,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-104,Add proper comments to the code,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-103,Implement proper logging and exception handling,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-102,Unit testing of the service in a local environment using Docker Compose,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-101,Persist generated heatmap to a file location,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-100,Generate heatmap in geojson format,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-99,Implement heat map generation using IDW method with configurable power function,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-98,Implement logic for obtaining latest air quality index values using timeseries API,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-97,Implement service as a Kubernetes CronJob,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-96,Configure queue names and credentials,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-95,Externalize generic configuration for RabbitMQ..,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-94,Testing for functionality and user input,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-93,Ensure visual consistency with design guidelines,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-92,Implement buttons,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-91,Implement dropdowns,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-90,Implement text fields,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-89,Testing for functionality and user input,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-88,Ensure visual consistency with design guidelines,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-87,Implement buttons,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-86,Implement dropdowns,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-85,Implement text fields,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-84,Implement button functionalities for user interaction,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-83,Design buttons in alignment with the application's design guidelines,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-82,Implement dropdown functionality for user selection,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-81,Design dropdowns as per the design guidelines,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-80,Implement text fields functionality for user input,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-79,Design text fields according to the application's design guidelines,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-78,Testing and ensuring functional user input,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-77,Ensure visual consistency with design guidelines,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-76,Implement buttons,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-75,Implement dropdowns,Don't forget to do this too.,To Do,,Medium,0,0,0,0
+TMA-74,Implement text fields,Don't forget to do this too.,To Do,,Medium,0,0,0,0
