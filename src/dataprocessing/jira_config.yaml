@@ -1,0 +1,5 @@
+username : "bijon.guha@siemens.com"
+api_token : "---"
+jira_url : "https://adv-sol.atlassian.net"
+jira_query : 'project = TMA'
+project_name : "TMA"
